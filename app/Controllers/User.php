@@ -58,7 +58,7 @@ class User extends BaseController
         }
     }
 
-    public function save()
+    public function add()
     {
         $rules = [
             'name'          => 'required|min_length[1]|max_length[20]',
