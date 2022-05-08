@@ -13,13 +13,14 @@ class User extends BaseController
 
     public function register()
     {
-        $data = [];
+        $data = ['title' => 'register',];
         echo view('register', $data);
     }
 
     public function login()
     {
-        echo view('login');
+        $data = ['title' => 'login',];
+        echo view('login', $data);
     }
 
     public function logout()

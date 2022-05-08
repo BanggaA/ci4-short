@@ -31,18 +31,25 @@ $routes->setAutoRoute(false);
 
 // We get a performance increase by specifying the default
 // route since we don't have to scan directories.
+
+//route main
 $routes->get('/', 'Short::index');
-$routes->get('s/(:any)', 'Short::send/$1');
+$routes->post('/', 'Short::shortedLink');
+$routes->get('c', 'Short::searchCounter');
+$routes->post('c', 'Short::urlClickCounter');
+$routes->get('c/(:alphanum)', 'Short::urlClickCounter/$1');
+$routes->get('s/(:alphanum)', 'Short::send/$1');
+
 
 //user route
 $routes->get('/login', 'User::login');
 $routes->get('/logout', 'User::logout');
 $routes->post('/login', 'User::auth');
-// $routes->get('/register', 'User::register');
-// $routes->post('/register', 'User::add');
-
-
+$routes->get('/register', 'User::register');
+$routes->post('/register', 'User::add');
 $routes->get('/dashboard', 'Dashboard::index', ['filter' => 'auth']);
+$routes->post('/setter', 'short::setter', ['filter' => 'auth']);
+
 
 /*
  * --------------------------------------------------------------------

@@ -1,58 +1,33 @@
-<!doctype html>
-<html lang="en">
+<?= $this->extend('template/base'); ?>
+<?= $this->section('content'); ?>
 
+<div class="container text-center pt-5 mt-5">
+    <h1 class="display-4 fw-bold"><span class="text-primary">shortened</span> URL</h1>
+</div>
+<div class="container">
 
-<head>
-
-    <!-- Required meta tags -->
-
-    <meta charset="utf-8">
-
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-
-    <!-- Bootstrap CSS -->
-
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/css/bootstrap.min.css" integrity="sha384-r4NyP46KrjDleawBgD5tp8Y7UzmLA05oM1iAEQ17CSuDqnUK2+k9luXQOfXJCJ4I" crossorigin="anonymous">
-
-    <title>Register</title>
-
-</head>
-
-
-<body>
-    <div class="container">
-        <div class="row justify-content-md-center">
-
-            <div class="col-6">
-                <h1>Sign Up</h1>
-                <?php if (isset($validation)) : ?>
-                    <div class="alert alert-danger"><?= $validation->listErrors() ?></div>
-                <?php endif; ?>
-                <form action="/register/save" method="post">
-                    <div class="mb-3">
-                        <label for="InputForName" class="form-label">Name</label>
-                        <input type="text" name="name" class="form-control" id="InputForName" value="<?= set_value('name') ?>">
+    <div class="row justify-content-center pt-5">
+        <div class="col-4">
+            <div class="card shadow-sm bg-body rounded">
+                <div class="card-body">
+                    <div class="d-flex justify-content-center">
+                        <h3>register</h3>
                     </div>
-                    <div class="mb-3">
-                        <label for="InputForPassword" class="form-label">Password</label>
-                        <input type="password" name="password" class="form-control" id="InputForPassword">
-                    </div>
-                    <div class="mb-3">
-                        <label for="InputForConfPassword" class="form-label">Confirm Password</label>
-                        <input type="password" name="confpassword" class="form-control" id="InputForConfPassword">
-                    </div>
-                    <button type="submit" class="btn btn-primary">Register</button>
-                </form>
+                    <?php if (isset($validation)) : ?>
+                        <div class="alert alert-danger"><?= $validation->listErrors() ?></div>
+                    <?php endif; ?>
+                    <form action="/register" method="post">
+                        <input type="text" name="name" placeholder="name" class="form-control form-control-sm mb-3" value="<?= set_value('name') ?>">
+                        <input type="password" name="password" placeholder="password" class="form-control form-control-sm mb-3">
+                        <input type="password" name="confpassword" placeholder="confirm password" class="form-control form-control-sm mb-3">
+                        <div class="d-flex justify-content-end">
+                            <button type="submit" class="btn btn-primary">Register</button>
+                        </div>
+                    </form>
+                </div>
             </div>
-
         </div>
     </div>
+</div>
 
-
-    <!-- Popper.js first, then Bootstrap JS -->
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/js/bootstrap.min.js" integrity="sha384-oesi62hOLfzrys4LxRF63OJCXdXDipiYWBnvTl9Y9/TRlw5xlKIEHpNyvvDShgf/" crossorigin="anonymous"></script>
-
-</body>
-
-</html>
+<?= $this->endSection('content'); ?>

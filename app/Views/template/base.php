@@ -13,16 +13,23 @@
 
 <body>
     <?= $this->renderSection('content') ?>
-    <footer class="fixed-bottom">
-        <div class="bg-primary p-1"></div>
-
-        <!-- Copyright -->
-        <div class="bg-dark text-center text-white p-2">
-            ©2022 shortened URL - aira
-        </div>
-        <!-- Copyright -->
-    </footer>
     <script src="<?= base_url() ?>/assets/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+    <footer class="footer pt-auto">
+        <div class="my-5 pt-4"></div>
+        <div class="bg-primary p-1"></div>
+        <div class="bg-dark text-center text-white p-2">
+            ©<?= date('Y') ?> shortened URL - aira
+            <ul class="nav justify-content-center ">
+                <li class="nav-item"><a href="<?= base_url() ?>" class="nav-link px-2 text-primary">Home</a></li>
+                <li class="nav-link px-2 text-white">|</li>
+                <li class="nav-item"><a href="<?= base_url() . "/c" ?>" class="nav-link px-2 text-primary">Click Tracker</a></li>
+                <li class="nav-link px-2 text-white">|</li>
+                <li class="nav-item"><a href="<?= base_url() . "/login" ?>" class="nav-link px-2 text-primary">login</a></li>
+                <!-- <li class="nav-link px-2 text-white">|</li> -->
+                <!-- <li class="nav-item"><a href="" class="nav-link px-2 text-muted">registration</a></li> -->
+            </ul>
+        </div>
+    </footer>
 </body>
 
 </html>
