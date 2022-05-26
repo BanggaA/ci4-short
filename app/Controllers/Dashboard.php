@@ -13,7 +13,7 @@ class Dashboard extends BaseController
         $query = $Short_db->findAll();
 
         $data = [
-            'title' => 'login',
+            'title' => 'dashboard',
             'short' => $query
         ];
 

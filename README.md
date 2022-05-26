@@ -1,2 +1,2 @@
-demo https://test-shortedurl.000webhostapp.com/
+demo https://demo-shorted.000webhostapp.com/
 user&pass : aira

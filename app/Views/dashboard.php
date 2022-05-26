@@ -30,17 +30,22 @@
                                 <tr>
                                     <td><?= $sh['created_at']; ?></td>
                                     <td><a href="<?= $sh['url']; ?>"><?= $sh['url']; ?></a></td>
+                                    <td><a href="<?= base_url() . '/' . $sh['slug']; ?>"><?= $sh['slug']; ?></a></td>
                                     <td><?= $sh['slug']; ?></td>
                                     <td><?= $sh['counter']; ?></td>
                                     <td class="text-<?= ($sh['is_active'] == 1) ? 'success' : 'danger'; ?>"><?= ($sh['is_active'] == 1) ? 'active' : 'dead'; ?></td>
-                                    <form action="/setter" method="post">
-                                        <input type="hidden" name="slug" value="<?= $sh['slug']; ?>">
-                                        <td>
+                                    <td>
+                                        <form action="/dashboard/setter" method="post">
+                                            <input type="hidden" name="slug" value="<?= $sh['slug']; ?>">
                                             <button type="submit" class="badge border-0 bg-<?= ($sh['is_active'] == 0) ? 'success' : 'danger'; ?>">
                                                 <?= ($sh['is_active'] == 0) ? 'on' : 'off'; ?>
                                             </button>
-                                        </td>
-                                    </form>
+                                        </form>
+                                        <form action="/dashboard/delete" method="post">
+                                            <input type="hidden" name="slug" value="<?= $sh['slug']; ?>">
+                                            <button type="submit" class="badge border-0 bg-warning">delete</button>
+                                        </form>
+                                    </td>
                                 </tr>
                             <?php endforeach; ?>
                         </tbody>

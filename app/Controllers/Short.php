@@ -108,6 +108,19 @@ class Short extends BaseController
         $Short_db->replace($data);
         return redirect()->to('/dashboard');
     }
+
+    public function delete()
+    {
+        $slug = $this->request->getVar('slug');
+
+        $Short_db = new ShortModel();
+        $query = $Short_db->where('slug', $slug)->delete();
+
+
+        return redirect()->to('/dashboard');
+    }
+
+
     public function send($slug)
     {
         $Short_db = new ShortModel();

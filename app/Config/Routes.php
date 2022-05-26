@@ -35,10 +35,10 @@ $routes->setAutoRoute(false);
 //route main
 $routes->get('/', 'Short::index');
 $routes->post('/', 'Short::shortedLink');
-$routes->get('c', 'Short::searchCounter');
-$routes->post('c', 'Short::urlClickCounter');
-$routes->get('c/(:alphanum)', 'Short::urlClickCounter/$1');
-$routes->get('s/(:alphanum)', 'Short::send/$1');
+$routes->get('/c', 'Short::searchCounter');
+$routes->post('/c', 'Short::urlClickCounter');
+$routes->get('/c/(:alphanum)', 'Short::urlClickCounter/$1');
+$routes->get('/s/(:alphanum)', 'Short::send/$1');
 
 
 //user route
@@ -48,7 +48,8 @@ $routes->post('/login', 'User::auth');
 $routes->get('/register', 'User::register');
 $routes->post('/register', 'User::add');
 $routes->get('/dashboard', 'Dashboard::index', ['filter' => 'auth']);
-$routes->post('/setter', 'short::setter', ['filter' => 'auth']);
+$routes->post('/dashboard/setter', 'Short::setter', ['filter' => 'auth']);
+$routes->post('/dashboard/delete', 'Short::delete', ['filter' => 'auth']);
 
 
 /*
