@@ -6,6 +6,7 @@ use App\Models\ShortModel;
 
 class Short extends BaseController
 {
+
     public function index()
     {
         $data = [
@@ -24,6 +25,8 @@ class Short extends BaseController
     public function shortedLink()
     {
         $url = $this->request->getVar('url');
+        $user_id = $this->request->getVar('user_id');
+
         if (substr($url, 0, 4) != 'http') {
             $url = "https://$url";
         };
@@ -40,9 +43,11 @@ class Short extends BaseController
 
         $query = [
             'url' => $url,
+            'user_id' => $user_id,
             'slug' => $slug,
             'counter' => 0,
             'is_active' => 1,
+            'created_at' => date("Y-m-d H:i:s", time())
         ];
 
         $Short_db->save($query);
@@ -100,9 +105,11 @@ class Short extends BaseController
 
         $data = [
             'url' => $query['url'],
+            'user_id' => $query['user_id'],
             'slug' => $slug,
             'counter' => $query['counter'],
             'is_active' => $is_active,
+            'created_at' => $query['created_at']
         ];
 
         $Short_db->replace($data);
@@ -131,9 +138,11 @@ class Short extends BaseController
 
         $data = [
             'url' => $query['url'],
+            'user_id' => $query['user_id'],
             'slug' => $slug,
             'counter' => $query['counter'] + 1,
             'is_active' => 1,
+            'created_at' => $query['created_at']
         ];
 
         $Short_db->replace($data);

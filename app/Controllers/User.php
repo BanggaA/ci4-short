@@ -44,7 +44,8 @@ class User extends BaseController
             $pass = $data['password'];
             if ($password == $pass) {
                 $ses_data = [
-                    'name'     => $data['name'],
+                    'user_id'       => $data['id'],
+                    'name'          => $data['name'],
                     'logged_in'     => TRUE
                 ];
                 $session->set($ses_data);

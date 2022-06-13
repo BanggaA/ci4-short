@@ -12,6 +12,7 @@
                         <div class="col-10">
                             <div class="input-group">
                                 <input type="text" name="url" class="form-control">
+                                <input type="hidden" name="user_id" value="<?= (!session()->get('logged_in') ? 0 : session()->get('user_id')) ?>" class="form-control">
                                 <button class="btn btn-outline-primary" type="submit">Short</button>
                             </div>
                         </div>

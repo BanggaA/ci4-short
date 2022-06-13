@@ -8,9 +8,10 @@ class Dashboard extends BaseController
 {
     public function index()
     {
-        $session = session();
+        $user_id = session()->get('user_id');
         $Short_db = new ShortModel();
-        $query = $Short_db->findAll();
+        if ($user_id != 0) $query = $Short_db->where('user_id', $user_id);
+        $query = $Short_db->orderBy('created_at', 'ASC')->findAll();
 
         $data = [
             'title' => 'dashboard',

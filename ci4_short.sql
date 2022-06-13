@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: May 08, 2022 at 02:33 AM
+-- Generation Time: Jun 13, 2022 at 04:00 PM
 -- Server version: 5.7.33
 -- PHP Version: 7.3.2
 
@@ -30,6 +30,7 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `short` (
   `url` varchar(255) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL,
+  `user_id` int(10) NOT NULL DEFAULT '1',
   `slug` varchar(5) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL,
   `counter` int(10) NOT NULL,
   `is_active` int(10) NOT NULL,
@@ -40,9 +41,10 @@ CREATE TABLE `short` (
 -- Dumping data for table `short`
 --
 
-INSERT INTO `short` (`url`, `slug`, `counter`, `is_active`, `created_at`) VALUES
-('https://web.whatsapp.com/', 'TP4Ke', 0, 0, '2022-05-08 02:30:17'),
-('https://www.youtube.com/', 'X18kL', 20, 1, '2022-05-08 02:29:21');
+INSERT INTO `short` (`url`, `user_id`, `slug`, `counter`, `is_active`, `created_at`) VALUES
+('https://www.youtube.com/', 0, '5isax', 1, 1, '2022-06-13 15:39:46'),
+('https://www.freecodecamp.org/learn', 0, 'SahbE', 0, 1, '2022-06-13 03:57:08'),
+('https://angel.co/', 1, 'ppVKL', 0, 1, '2022-06-13 15:40:22');
 
 -- --------------------------------------------------------
 
@@ -62,8 +64,8 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `name`, `password`, `created_at`) VALUES
-(1, 'aira', 'aira', '2022-05-07 18:53:59'),
-(2, 'admin', 'admin', '2022-05-08 02:31:22');
+(0, 'aira', 'aira', '2022-05-07 18:53:59'),
+(1, 'guest', 'guest', '2022-05-08 02:31:22');
 
 --
 -- Indexes for dumped tables
@@ -73,7 +75,8 @@ INSERT INTO `users` (`id`, `name`, `password`, `created_at`) VALUES
 -- Indexes for table `short`
 --
 ALTER TABLE `short`
-  ADD PRIMARY KEY (`slug`);
+  ADD PRIMARY KEY (`slug`),
+  ADD KEY `user_id` (`user_id`);
 
 --
 -- Indexes for table `users`
@@ -89,7 +92,17 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
+-- Constraints for dumped tables
+--
+
+--
+-- Constraints for table `short`
+--
+ALTER TABLE `short`
+  ADD CONSTRAINT `short_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

@@ -30,8 +30,7 @@
                                 <tr>
                                     <td><?= $sh['created_at']; ?></td>
                                     <td><a href="<?= $sh['url']; ?>"><?= $sh['url']; ?></a></td>
-                                    <td><a href="<?= base_url() . '/' . $sh['slug']; ?>"><?= $sh['slug']; ?></a></td>
-                                    <td><?= $sh['slug']; ?></td>
+                                    <td><a href="<?= base_url() . "/s/" . $sh['slug']; ?>"><?= $sh['slug']; ?></a></td>
                                     <td><?= $sh['counter']; ?></td>
                                     <td class="text-<?= ($sh['is_active'] == 1) ? 'success' : 'danger'; ?>"><?= ($sh['is_active'] == 1) ? 'active' : 'dead'; ?></td>
                                     <td>

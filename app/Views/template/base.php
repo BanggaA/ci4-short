@@ -28,10 +28,10 @@
                 <li class="nav-item"><a href="<?= base_url() ?>" class="nav-link px-2 text-primary">Home</a></li>
                 <li class="nav-link px-2 text-white">|</li>
                 <li class="nav-item"><a href="<?= base_url() . "/c" ?>" class="nav-link px-2 text-primary">Click Tracker</a></li>
-                <!-- <li class="nav-link px-2 text-white">|</li> -->
-                <!-- <li class="nav-item"><a href="" class="nav-link px-2 text-muted">registration</a></li> -->
                 <li class="nav-link px-2 text-white">|</li>
                 <?php if (!session()->get('logged_in')) : ?>
+                    <li class="nav-item"><a href="<?= base_url() . "/register" ?>" class="nav-link px-2">registration</a></li>
+                    <li class="nav-link px-2 text-white">|</li>
                     <li class="nav-item"><a href="<?= base_url() . "/login" ?>" class="nav-link px-2 text-primary">Login</a></li>
                 <?php else : ?>
                     <li class="nav-item"><a href="<?= base_url() . "/dashboard" ?>" class="nav-link px-2 text-primary">Dashboard</a></li>
